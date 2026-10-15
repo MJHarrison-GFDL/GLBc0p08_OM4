@@ -1,0 +1,136 @@
+<freInclude xmlns:xi="http://www.w3.org/2003/XInclude">
+     <!-- GFDL Analysis/PP Platforms -->
+
+    <platform name="gfdl.postprocess">
+      <freVersion>$(FRE_VERSION)</freVersion>
+
+      <property name="NB_ROOT"            value="/nbhome/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)"/>
+      <property name="F2003_FLAGS"        value="-DINTERNAL_FILE_NML"/>
+      <property name="WFC_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="ATW_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="FJZ_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="FNL_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="DJP_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="VAN_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="LWH_ARCHIVE_ROOT"  value="/archive"/>
+      <property name="CMIP6_ARCHIVE_ROOT" value="/archive/oar.gfdl.cmip6/datasets"/>
+      <property name="SD_ARCHIVE_ROOT"   value="/archive"/>
+
+      <directory stem="$(FRE_STEM)" >
+        <root>/home/$USER/SPEAR</root>
+        <archive>/archive/$USER/SPEAR/$(name)</archive>
+        <include>$(rootDir)/SPEAR_include</include>
+        <analysis>/nbhome/$USER/$(stem)/$(name)</analysis>
+      </directory>
+
+      <csh><![CDATA[
+        module load git
+        setenv NBROOT $(NB_ROOT)
+        setenv FREVERSION fre/$(FRE_VERSION)
+        ]]>
+      </csh>
+    </platform>
+
+    <platform name="gfdl.ncrc4-intel">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc4-intel16">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc4-intel18">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc4-intel21">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc4-intel-oneapi-21_3">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc5-intel-classic">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <platform name="gfdl.ncrc5-intel23_2_0">
+      <xi:include xpointer="xpointer(//freInclude/platform[@name='gfdl.postprocess']/node())" />
+    </platform>
+
+    <!-- NCRC Platforms -->
+
+
+    <platform name="ncrc5.intel-classic">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel-classic" version="2022.0.2" />
+
+      <property name="F2003_FLAGS"         value="-DINTERNAL_FILE_NML"/>
+      <property name="WFC_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/William.Cooke"/>
+      <property name="ATW_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Andrew.Wittenberg"/>
+      <property name="FJZ_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Fanrong.Zeng"/>
+      <property name="FNL_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Feiyu.Lu"/>
+      <property name="DJP_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_m/world-shared/David.Paynter"/>
+      <property name="VAN_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_b/world-shared/Vaishali.Naik"/>
+      <property name="LWH_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_b/world-shared/Larry.Horowitz"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="/gpfs/f5/gfdl_a/world-shared/cmip6/datasets"/>
+      <property name="SD_ARCHIVE_ROOT"     value="/gpfs/f5/gfdl_sd/world-shared"/>
+      <property name="NB_ROOT"             value="/nbhome/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)"/>
+
+      <project>gfdl_o</project>
+
+      <directory stem="$(FRE_STEM)">
+        <include>$(xmlDir)/SPEAR_include</include>
+        <src>/gpfs/f5/gfdl_o/proj-shared/$USER/$(FRE_STEM)/$(name)/src/</src>
+        <exec>/gpfs/f5/gfdl_o/proj-shared/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec/</exec>
+
+        <!--
+        <include>$HOME/SPEAR/SPEAR_include</include>
+        -->
+      </directory>
+
+      <csh><![CDATA[
+       module load cray-libsci/22.10.1.2
+      ]]></csh>
+
+    </platform>
+
+    <platform name="ncrc5.intel23_2_0">
+      <freVersion>$(FRE_VERSION)</freVersion>
+      <compiler type="intel-classic" version="2023.2.0" />
+
+      <property name="F2003_FLAGS"         value="-DINTERNAL_FILE_NML"/>
+      <property name="WFC_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/William.Cooke"/>
+      <property name="ATW_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Andrew.Wittenberg"/>
+      <property name="FJZ_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Fanrong.Zeng"/>
+      <property name="FNL_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_sd/world-shared/Feiyu.Lu"/>
+      <property name="DJP_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_m/world-shared/David.Paynter"/>
+      <property name="VAN_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_b/world-shared/Vaishali.Naik"/>
+      <property name="LWH_ARCHIVE_ROOT"    value="/gpfs/f5/gfdl_b/world-shared/Larry.Horowitz"/>
+      <property name="CMIP6_ARCHIVE_ROOT"  value="/gpfs/f5/gfdl_a/world-shared/cmip6/datasets"/>
+      <property name="SD_ARCHIVE_ROOT"     value="/gpfs/f5/gfdl_sd/world-shared"/>
+      <property name="NB_ROOT"             value="/nbhome/$USER/$(FRE_STEM)$(DEBUGLEVEL)/$(name)"/>
+
+      <project>gfdl_o</project>
+
+      <directory stem="$(FRE_STEM)">
+        <include>$(xmlDir)/SPEAR_include</include>
+        <src>/gpfs/f5/gfdl_o/proj-shared/$USER/$(FRE_STEM)/$(name)/src/</src>
+        <exec>/gpfs/f5/gfdl_o/proj-shared/$USER/$(FRE_STEM)/$(name)/$(platform)-$(target)/exec/</exec>
+
+        <!--
+        <include>$HOME/SPEAR/SPEAR_include</include>
+        -->
+      </directory>
+
+      <csh><![CDATA[
+        module unload cray-libsci
+        module load cray-libsci/24.07.0
+        module unload darshan-runtime
+        module load git
+      ]]></csh>
+
+    </platform>
+
+</freInclude>
